@@ -2,9 +2,9 @@ firstChoice = document.querySelector('input[name="area"]');
 butttonFirstChoice = document.querySelector('#chooseArea');
 
 butttonFirstChoice.addEventListener("click", function (event) {
+	event.preventDefault();
 	let secondValue;
 	let message = document.querySelector('#choosedArea')
-	event.preventDefault();
 	const value = firstChoice.value
 
 	message.innerHTML = "Você escolheu " + value;
