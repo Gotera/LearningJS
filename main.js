@@ -1,58 +1,61 @@
 firstChoice = document.querySelector('input[name="area"]');
 butttonFirstChoice = document.querySelector('#escolherArea');
-console.log(butttonFirstChoice);
 
 butttonFirstChoice.addEventListener("click", function (event) {
 	let message = document.querySelector('#choosedArea')
 	event.preventDefault();
-	const choice = firstChoice
-	const value = choice.value
-
-	console.log(value)
+	const value = firstChoice.value
 
 	message.innerHTML = "Você escolheu " + value;
-	FirstChoiceFilterToFrontEnd()
-	IndependentChoiceAboutFuture()
+
+	FirstChoiceFilterToFrontEnd(value)
+	// IndependentChoiceAboutFuture()
 });
 
-function FirstChoiceFilterToFrontEnd() {
-	let phase2Message = document.querySelector('#phase2Message')
+function createInputTextX() {
 	var x = document.createElement("INPUT");
+	x.setAttribute("type", "text");
+	x.setAttribute("name", "advancedArea");
+	x.setAttribute("placeHolder", "React ou Vue");
+	document.body.appendChild(x);
+}
+
+function createInputTextY() {
 	var y = document.createElement("INPUT");
-	const choice = firstChoice
-	const value = choice.value
+	y.setAttribute("type", "submit");
+	y.setAttribute("id", "secondAreaName");
+	y.setAttribute("name", "secondArea");
+	document.body.appendChild(y);
+}
+
+function FirstChoiceFilterToFrontEnd(value) {
+	let phaseTwoMessage = document.querySelector('#phaseTwoMessage')
+	let secondMessage = document.querySelector('#secondChoosedArea')
 
 	if (value == "Front-End") {
-		secondChoice = document.querySelector('input[name="advancedArea"]');
-		phase2Message.innerHTML = "Já que escolheu Front-End, você prefere React ou Vue?"
-		x.setAttribute("type", "text");
-		x.setAttribute("id", "advancedArea");
-		x.setAttribute("placeHolder", "React ou Vue");
-		document.body.appendChild(x);
+		createInputTextX()
+		createInputTextY()
+		phaseTwoMessage.innerHTML = "Já que escolheu Front-End, você prefere React ou Vue?"
 
-		console.log(secondChoice)
-		y.setAttribute("type", "submit");
-		document.body.appendChild(y);
 	} else {
 		if (value == "Back-End") {
-			phase2Message.innerHTML = "Já que escolheu Back-End, você prefere C# ou Java?"
-			x.setAttribute("type", "text");
-			x.setAttribute("placeHolder", "C# ou Java");
-			document.body.appendChild(x);
+			phaseTwoMessage.innerHTML = "Já que escolheu Back-End, você prefere C# ou Java?"
 
-			y.setAttribute("type", "submit");
-			document.body.appendChild(y);
+			createInputTextX()
+			createInputTextY()
+
 		} else {
-			phase2Message.innerHTML = "Escolha uma das duas opções disponiveis"
+			phaseTwoMessage.innerHTML = "Escolha uma das duas opções disponiveis"
 		}
 	}
+
 }
 
 function IndependentChoiceAboutFuture() {
 	let phase3Message = document.querySelector('#phase3Message')
 	var x = document.createElement("INPUT");
 	var y = document.createElement("INPUT");
-	
+
 	phase3Message.innerHTML = "Agora que chegou até aqui, qual será seu próximo passo?"
 	x.setAttribute("type", "select");
 	x.setAttribute("placeHolder", "React ou Vue");
