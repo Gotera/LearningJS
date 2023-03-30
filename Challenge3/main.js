@@ -15,7 +15,7 @@ butttonFirstChoice.addEventListener("click", function (event) {
 function createInputTextX() {
 	var x = document.createElement("INPUT");
 	x.setAttribute("type", "text");
-	x.setAttribute("name", "advancedArea");
+	x.setAttribute("name", "secondArea");
 	x.setAttribute("placeHolder", "React ou Vue");
 	document.body.appendChild(x);
 }
@@ -26,6 +26,12 @@ function createInputTextY() {
 	y.setAttribute("id", "secondAreaName");
 	y.setAttribute("name", "secondArea");
 	document.body.appendChild(y);
+}
+
+function listeningClick(btnToBeHeard) {
+	btnToBeHeard.addEventListener("click", function (event) {
+
+	})
 }
 
 function FirstChoiceFilterToFrontEnd(value) {
