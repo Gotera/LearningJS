@@ -2,7 +2,7 @@ firstChoice = document.querySelector('input[name="area"]');
 butttonFirstChoice = document.querySelector('#chooseArea');
 
 butttonFirstChoice.addEventListener("click", function (event) {
-	var secondValue;
+	let secondValue;
 	let message = document.querySelector('#choosedArea')
 	event.preventDefault();
 	const value = firstChoice.value
@@ -18,8 +18,8 @@ butttonFirstChoice.addEventListener("click", function (event) {
 
 function IndependentChoiceAboutFuture() {
 	let phase3Message = document.querySelector('#phase3Message')
-	var x = document.createElement("INPUT");
-	var y = document.createElement("INPUT");
+	const x = document.createElement("INPUT");
+	const y = document.createElement("INPUT");
 
 	phase3Message.innerHTML = "Agora que chegou até aqui, qual será seu próximo passo?"
 	x.setAttribute("type", "select");
@@ -29,7 +29,7 @@ function IndependentChoiceAboutFuture() {
 }
 
 function createInputTextX() {
-	var x = document.createElement("INPUT");
+	const x = document.createElement("INPUT");
 	x.setAttribute("type", "text");
 	x.setAttribute("name", "secondNameArea");
 	x.setAttribute("placeHolder", "React ou Vue");
@@ -37,7 +37,7 @@ function createInputTextX() {
 }
 
 function createInputTextY() {
-	var y = document.createElement("INPUT");
+	const y = document.createElement("INPUT");
 	y.setAttribute("type", "submit");
 	y.setAttribute("id", "secondChooseArea");
 	y.setAttribute("name", "secondArea");
@@ -45,18 +45,18 @@ function createInputTextY() {
 }
 
 function takeSecondValue() {
-	var buttonSecondChoice = document.querySelector('#secondChooseArea')
+	const buttonSecondChoice = document.querySelector('#secondChooseArea')
 	buttonSecondChoice.addEventListener("click", function (event) {
 		event.preventDefault();
 		let secondMessage = document.querySelector('#secondChoosedArea')
-		var secondChoice = document.querySelector('input[name="secondNameArea"]');
+		const secondChoice = document.querySelector('input[name="secondNameArea"]');
 		const secondValue = secondChoice.value
 		return secondMessage.innerHTML = "Você escolheu " + secondValue;
 	})
 }
 
 function FirstChoiceFilterToFrontEnd(value) {
-	var phaseTwoMessage = document.querySelector('#phaseTwoMessage')
+	const phaseTwoMessage = document.querySelector('#phaseTwoMessage')
 
 	if (value == "Front-End") {
 		phaseTwoMessage.innerHTML = "Já que escolheu Front-End, você prefere React ou Vue?"
