@@ -10,9 +10,6 @@ butttonFirstChoice.addEventListener("click", function (event) {
 	message.innerHTML = "Você escolheu " + value;
 
 	FirstChoiceFilterToFrontEnd(value)
-	if (typeof secondValue !== 'undefined') {
-		IndependentChoiceAboutFuture()
-	}
 
 });
 
@@ -36,23 +33,37 @@ function createInputTextX() {
 	document.body.appendChild(x);
 }
 
+function disableInputAfterClick(y) {
+	y.addEventListener("click", function () {
+		y.setAttribute("disabled", false);
+	})
+}
+
 function createInputTextY() {
 	const y = document.createElement("INPUT");
 	y.setAttribute("type", "submit");
 	y.setAttribute("id", "secondChooseArea");
 	y.setAttribute("name", "secondArea");
 	document.body.appendChild(y);
+	disableInputAfterClick(y)
 }
 
-function takeSecondValue() {
+function takeSecondValue(secondValue, x) {
 	const buttonSecondChoice = document.querySelector('#secondChooseArea')
 	buttonSecondChoice.addEventListener("click", function (event) {
 		event.preventDefault();
 		let secondMessage = document.querySelector('#secondChoosedArea')
 		const secondChoice = document.querySelector('input[name="secondNameArea"]');
-		const secondValue = secondChoice.value
+		secondValue = secondChoice.value
+		// teste(secondValue)
 		return secondMessage.innerHTML = "Você escolheu " + secondValue;
 	})
+}
+
+function teste(secondValue) {
+	if (typeof secondValue !== 'undefined') {
+		IndependentChoiceAboutFuture()
+	}
 }
 
 function FirstChoiceFilterToFrontEnd(value) {
