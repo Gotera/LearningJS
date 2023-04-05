@@ -43,12 +43,26 @@ function createElement(item) {
 	numberItem.innerHTML = item.quantity
 	numberItem.dataset.id = item.id
 	newItem.appendChild(numberItem)
-
 	newItem.innerHTML += item.name
-
+	newItem.appendChild(buttonDelete())
 	list.appendChild(newItem)
 }
 
 function updateElemenet(item) {
 	document.querySelector("[data-id='" + item.id + "']").innerHTML = item.quantity
+}
+
+function buttonDelete() {
+	const elementButton = document.createElement('button')
+	elementButton.innerText = "X"
+
+	elementButton.addEventListener("click", function () {
+		deleteElement(this.parentNode)
+	})
+
+	return elementButton
+}
+
+function deleteElement (item) {
+	item.remove()
 }
