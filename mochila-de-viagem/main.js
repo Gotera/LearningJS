@@ -2,8 +2,6 @@ const form = document.getElementById('novoItem')
 const list = document.getElementById('lista')
 const itens = JSON.parse(localStorage.getItem('itens')) || []
 
-console.log(itens)
-
 itens.forEach((element) => {
 	createElement(element)
 })
@@ -13,23 +11,19 @@ form.addEventListener('submit', (event) => {
 	const name = event.target.elements['nome']
 	const quantity = event.target.elements['quantidade']
 	const exists = itens.find(element => element.name === name.value)
-
 	const currentItem = {
 		"name": name.value,
 		"quantity": quantity.value
 	}
-
 	if (exists) {
 		currentItem.id = exists.id
 		updateElemenet(currentItem)
-		itens[exists.id] = currentItem
+		itens[itens.findIndex(element => element.id === exists.id)] = currentItem
 	} else {
-		currentItem.id = itens.length
+		currentItem.id = itens[itens.length - 1] ? (itens[itens.length - 1]).id + 1 : 0
 		createElement(currentItem)
 		itens.push(currentItem)
 	}
-
-
 	localStorage.setItem('itens', JSON.stringify(itens))
 	name.value = ''
 	quantity.value = ''
