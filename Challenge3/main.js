@@ -3,27 +3,13 @@ butttonFirstChoice = document.querySelector('#chooseArea');
 
 butttonFirstChoice.addEventListener("click", function (event) {
 	event.preventDefault();
-	let secondValue;
 	let message = document.querySelector('#choosedArea')
 	const value = firstChoice.value
 
 	message.innerHTML = "Você escolheu " + value;
 
 	FirstChoiceFilterToFrontEnd(value)
-
 });
-
-function IndependentChoiceAboutFuture() {
-	let phase3Message = document.querySelector('#phase3Message')
-	const x = document.createElement("INPUT");
-	const y = document.createElement("INPUT");
-
-	phase3Message.innerHTML = "Agora que chegou até aqui, qual será seu próximo passo?"
-	x.setAttribute("type", "select");
-	x.setAttribute("placeHolder", "React ou Vue");
-	y.setAttribute("type", "submit");
-	document.body.appendChild(y);
-}
 
 function createInputTextX() {
 	const x = document.createElement("INPUT");
@@ -55,8 +41,8 @@ function takeSecondValue(secondValue, x) {
 		let secondMessage = document.querySelector('#secondChoosedArea')
 		const secondChoice = document.querySelector('input[name="secondNameArea"]');
 		secondValue = secondChoice.value
-		// teste(secondValue)
-		return secondMessage.innerHTML = "Você escolheu " + secondValue;
+		secondMessage.innerHTML = "Você escolheu " + secondValue;
+		teste(secondValue)
 	})
 }
 
@@ -75,7 +61,6 @@ function FirstChoiceFilterToFrontEnd(value) {
 		createInputTextX()
 		createInputTextY()
 		takeSecondValue()
-
 	} else {
 		if (value == "Back-End") {
 			phaseTwoMessage.innerHTML = "Já que escolheu Back-End, você prefere C# ou Java?"
@@ -87,4 +72,16 @@ function FirstChoiceFilterToFrontEnd(value) {
 			phaseTwoMessage.innerHTML = "Escolha uma das duas opções disponiveis"
 		}
 	}
+}
+
+function IndependentChoiceAboutFuture() {
+	let phase3Message = document.querySelector('#phase3Message')
+	const x = document.createElement("INPUT");
+	const y = document.createElement("INPUT");
+
+	phase3Message.innerHTML = "Agora que chegou até aqui, qual será seu próximo passo?"
+	x.setAttribute("type", "select");
+	x.setAttribute("placeHolder", "React ou Vue");
+	y.setAttribute("type", "submit");
+	document.body.appendChild(y);
 }
