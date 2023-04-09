@@ -3,20 +3,37 @@ btnSubmit = document.getElementById('submit')
 inputAttempts = document.getElementById('attempts')
 randomNumber = Math.floor(Math.random() * 10) + 1;
 console.log(randomNumber)
+inputAttempts.innerHTML = 'Você tem 3 tentavias.'
 tries = 3
-inputAttempts.innerHTML = 'Você tem ' + tries + ' tentavias.'
 
 btnSubmit.addEventListener('click', function (event) {
 	event.preventDefault();
 	answer = document.getElementById('answer')
 	value = answer.value
+
 	while (tries > 0) {
 		verifyAnswer(value, randomNumber)
 		tries--
 
-		return
+		if (tries == 0) {
+			disableButtonIfNoMoreTries()
+			showTheCorretNumber()
+		}
+		return triesMessage()
+
 	}
 })
+
+function triesMessage() {
+	inputAttempts.innerHTML = 'Você tem ' + tries + ' tentavias.'
+	if (tries == 0) {
+		inputAttempts.innerHTML = 'Suas tentativas acabaram'
+	}
+}
+
+function showTheCorretNumber() {
+	document.getElementById('secondCommentary').innerHTML = 'O numero correto era ' + randomNumber + '.'
+}
 
 function verifyAnswer(value, randomNumber) {
 	btnSubmit = document.getElementById('submit')
